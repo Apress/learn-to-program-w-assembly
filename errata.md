@@ -1,13 +1,19 @@
 # Errata for *Learn to Program with Assembly*
 
-On **page xx** [Summary of error]:
- 
-Details of error here. Highlight key pieces in **bold**.
+In **Section 12.6** [exponentscanf.s scanformat variable is malformed]:
 
-***
+Instead of the following:
+```
+scanformat:
+  .ascii "%d %d\0"
+```
 
-On **page xx** [Summary of error]:
- 
-Details of error here. Highlight key pieces in **bold**.
+The code should be:
+```
+scanformat:
+  .ascii "%**L**d %**L**d\0"
+```
+
+This is so that the fscanf function will replace the entire quad-word memory locations for the stack variables instead of the lesser-significant portion of that memory. Previously, if there was garbage data in the higher-significant double-word, it could affect the exponent function countdown.
 
 ***
