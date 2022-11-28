@@ -11,7 +11,7 @@ scanformat:
 The code should be:
 ```
 scanformat:
-  .ascii "%**L**d %**L**d\0"
+  .ascii "%Ld %Ld\0"
 ```
 
 This is so that the fscanf function will replace the entire quad-word memory locations for the stack variables instead of the lesser-significant portion of that memory. Previously, if there was garbage data in the higher-significant double-word, it could affect the exponent function countdown.
